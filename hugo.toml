@@ -38,6 +38,8 @@ defaultContentLanguageInSubdir = true
   #avatar = "avatar.jpg"
   avatar = "avatarshelter.png"
 
+  favicon = "/images/favicon.ico"
+
   # Social links
   [[params.social]]
     icon = "brand-github"
@@ -47,6 +49,10 @@ defaultContentLanguageInSubdir = true
     icon = "brand-linkedin"
     name = "LinkedIn"
     url = "https://www.linkedin.com/in/BlackVS/"
+  [[params.social]]
+    icon = "brand-youtube"
+    name = "Youtube"
+    url = "https://www.youtube.com/@WujkoBobShelter"
 
 
 [params.style]
