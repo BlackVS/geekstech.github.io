@@ -1,0 +1,17 @@
+﻿{{ if hugo.IsMultilingual }}
+<div id="language-switch" class="language-buttons">
+    {{ $siteLanguages := .Site.Languages }}
+    {{ $pageLang := .Page.Lang }}
+    {{ range .Page.AllTranslations }}
+        {{ $translation := . }}
+        {{ range $siteLanguages }}
+            {{ if eq $translation.Lang .Lang }}
+                <a href="{{ $translation.RelPermalink }}" 
+                   class="language-button {{ if eq $pageLang .Lang }}active{{ end }}">
+                    <img src="/images/flags/{{ .Lang }}.svg" alt="{{ .LanguageName }}" class="flag">
+                </a>
+            {{ end }}
+        {{ end }}
+    {{ end }}
+</div>
+{{ end }}
