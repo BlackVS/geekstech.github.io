@@ -11,10 +11,15 @@
   }
 }
 
+.posts-list-item-title {
+  color: $posts-list-item-color;
+}
+
 .posts-list-item-description {
   display: flex;
   align-items: center;
   font-size: 0.8em;
+  color: $posts-list-item-desc-color;
 
   > .icon {
     margin-right: 0.4em;

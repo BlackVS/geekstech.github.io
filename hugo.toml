@@ -57,7 +57,10 @@ defaultContentLanguageInSubdir = true
 
 [params.style]
 #  darkestColor = "#d35050"
-#  darkColor = "#212121"
-#  lightColor = "#f5e3e0"
-#  lightestColor = "#f5f5f5"
+#  darkColor = "#210021"
+#  lightColor = "#f500e0"
+#  lightestColor = "#ff00ff"
+#  primaryColor = "#7f007f"
   primaryColor = "#7f7f7f"
+  postsListItemColor = "#cfcfcf"
+  postsListItemDescColor = "#7f7f7f"
