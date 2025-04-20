@@ -5,6 +5,7 @@ theme = "m10c"
 tableOfContents = true
 defaultContentLanguage = 'ua'
 defaultContentLanguageInSubdir = true
+enableRobotsTXT = true
 
 [languages]
   [languages.ua]
