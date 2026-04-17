@@ -8,16 +8,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="{{ .Site.Params.author | default "John Doe" }}" />
     <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}" />
+    <link rel="canonical" href="{{ .Permalink }}" />
+    {{ if or .IsTranslated .IsHome }}
+    {{ $defaultLang := .Site.Params.defaultLang | default "ua" }}
+    {{ range .AllTranslations }}
+    <link rel="alternate" hreflang="{{ .Site.LanguageCode | default .Lang }}" href="{{ .Permalink }}" />
+    {{ end }}
+    {{ with index (where .AllTranslations "Lang" $defaultLang) 0 }}
+    <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />
+    {{ end }}
+    {{ end }}
     {{ $style := resources.Get "css/main.scss" | resources.ExecuteAsTemplate "css/main.scss" . | css.Sass | resources.Minify | resources.Fingerprint -}}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
     {{ with .OutputFormats.Get "rss" -}}
-    {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+    {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
     {{ end }}
-
 
     {{ template "_internal/google_analytics.html" . }}
     {{ template "_internal/twitter_cards.html" . }}
     {{ template "_internal/opengraph.html" . }}
+    {{ if not .Params.images }}
+    {{ with .Site.Params.ogImage }}
+    <meta property="og:image" content="{{ . | absURL }}" />
+    {{ end }}
+    {{ end }}
+    {{ if eq .Kind "page" }}
+    <meta property="article:author" content="{{ .Site.Params.author }}" />
+    {{ end }}
 
   </head>
   <body>

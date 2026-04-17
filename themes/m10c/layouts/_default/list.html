@@ -1,4 +1,18 @@
 {{ define "main" }}
+{{ $items := slice }}
+{{ range where .Paginator.Pages "Type" "!=" "page" }}
+{{ $items = $items | append (dict "@type" "BlogPosting" "url" .Permalink "headline" .Title) }}
+{{ end }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": {{ if .IsHome }}{{ .Site.Title | jsonify }}{{ else }}{{ .Title | jsonify }}{{ end }},
+  "url": {{ .Permalink | jsonify }},
+  "description": {{ if .IsHome }}{{ .Site.Params.description | jsonify }}{{ else }}{{ .Description | jsonify }}{{ end }},
+  "hasPart": {{ $items | jsonify }}
+}
+</script>
   <article>
     {{ with .Title -}}<h1>{{- . -}}</h1>{{- end }}
     {{ with .Content -}}<div class="post-content">{{- . -}}</div>{{- end }}

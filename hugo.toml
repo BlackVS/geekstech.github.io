@@ -18,6 +18,7 @@ enableRobotsTXT = true
     weight = 1
     [languages.ua.params]
       subtitle = 'Усяке навколотехнічне'
+      description = 'Блог про ІТ, кібербезпеку та гік-технології'
   [languages.en]
     contentDir = 'content/en'
     disabled = false
@@ -28,6 +29,7 @@ enableRobotsTXT = true
     weight = 2
     [languages.en.params]
       subtitle = 'Geeks tech stuff'
+      description = 'Blog about IT, cybersecurity and geek tech'
 
 [params]
   # Author
@@ -40,6 +42,8 @@ enableRobotsTXT = true
   avatar = "avatarshelter.png"
 
   favicon = "/images/favicon.ico"
+  ogImage = "/avatarshelter.png"
+  defaultLang = "ua"
 
   # Social links
   [[params.social]]
@@ -55,6 +59,11 @@ enableRobotsTXT = true
     name = "Youtube"
     url = "https://www.youtube.com/@WujkoBob"
 
+
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
 
 [params.style]
 #  darkestColor = "#d35050"

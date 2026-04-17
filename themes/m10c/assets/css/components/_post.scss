@@ -1,3 +1,27 @@
+.post-back {
+  display: inline-block;
+  font-size: 0.85em;
+  opacity: 0.75;
+  margin-bottom: 0.75em;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  margin-top: 2em;
+  font-size: 0.9em;
+}
+
+.post-nav-next {
+  margin-left: auto;
+  text-align: right;
+}
+
 .post-title {
   color: $lightest-color;
 }

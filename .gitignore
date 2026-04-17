@@ -1,3 +1,14 @@
 public/
 .hugo_build.lock
 node_modules/
+
+# Hugo binary
+hugo.exe
+hugo
+
+# Generated asset cache (reproducible on build)
+resources/_gen/
+
+# Editor / tooling
+.vscode/
+.claude/

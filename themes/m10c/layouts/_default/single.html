@@ -1,6 +1,21 @@
 {{ define "main" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ .Title | jsonify }},
+  "url": {{ .Permalink | jsonify }},
+  "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+  "author": { "@type": "Person", "name": {{ .Site.Params.author | jsonify }} },
+  "publisher": { "@type": "Organization", "name": {{ .Site.Title | jsonify }} },
+  "image": {{ with .Params.images }}{{ index . 0 | absURL | jsonify }}{{ else }}{{ .Site.Params.ogImage | absURL | jsonify }}{{ end }}{{ with .Description }},
+  "description": {{ . | jsonify }}{{ end }}
+}
+</script>
   <article class="post">
     <header class="post-header">
+      <a class="post-back" href="{{ .CurrentSection.RelPermalink }}">← {{ .CurrentSection.Title }}</a>
       <h1 class ="post-title">{{ .Title }}</h1>
       {{- if ne .Type "page" }}
       <div class="post-meta">
@@ -29,7 +44,18 @@
       {{ .Content }}
     </div>
     <div class="post-footer">
+      <a class="post-back" href="{{ .CurrentSection.RelPermalink }}">← {{ .CurrentSection.Title }}</a>
       {{ template "_internal/disqus.html" . }}
     </div>
+    {{ if or .PrevInSection .NextInSection }}
+    <nav class="post-nav">
+      {{ with .PrevInSection }}
+      <a class="post-nav-item post-nav-prev" href="{{ .Permalink }}">← {{ .Title }}</a>
+      {{ end }}
+      {{ with .NextInSection }}
+      <a class="post-nav-item post-nav-next" href="{{ .Permalink }}">{{ .Title }} →</a>
+      {{ end }}
+    </nav>
+    {{ end }}
   </article>
 {{ end }}

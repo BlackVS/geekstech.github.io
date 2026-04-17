@@ -1,4 +1,12 @@
 {{ define "main" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": {{ .Title | jsonify }},
+  "url": {{ .Permalink | jsonify }}
+}
+</script>
   <article>
     <h1>{{ .Title }}</h1>
     <ul class="tags-list">
