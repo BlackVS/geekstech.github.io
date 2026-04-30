@@ -53,7 +53,7 @@ enableRobotsTXT = true
   [[params.social]]
     icon = "brand-linkedin"
     name = "LinkedIn"
-    url = "https://www.linkedin.com/in/BlackVS/"
+    url = "https://www.linkedin.com/in/blackvs"
   [[params.social]]
     icon = "brand-youtube"
     name = "Youtube"
