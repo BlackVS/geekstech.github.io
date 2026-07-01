@@ -12,3 +12,6 @@ resources/_gen/
 # Editor / tooling
 .vscode/
 .claude/
+
+# Paint.NET autosave cruft
+*.pdnSave
